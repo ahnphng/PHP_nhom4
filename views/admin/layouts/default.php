@@ -2,70 +2,35 @@
 <html lang="en">
 
 <head>
+    <base href="<?php echo BASE_PATH ?>">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="./asset/storage/cozy_logo.png" type="image/png" />
+    <link rel="shortcut icon" href="<?= asset('storage/cozy_logo.png') ?>" type="image/png" />
     <title>
-        Cozy Home 
+    Cozy Home | <?php defineblock('title') ?>
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <!-- Nucleo Icons -->
-    <link href="./css/nucleo-icons.css" rel="stylesheet" />
-    <link href="./css/nucleo-svg.css" rel="stylesheet" />
+    <link href="<?= asset('admin/assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('admin/assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="./css/material-dashboard.css" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
-    <link href="./css/toastr.min.css" type="text/css" rel="stylesheet">
+    <link id="pagestyle" href="<?= asset('admin/assets/css/material-dashboard.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('admin/assets/css/main.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('admin/assets/css/toastr.min.css') ?>" type="text/css" rel="stylesheet">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+    <?php include('views/admin/layouts/includes/_aside.php') ?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
-            <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
-                    <h6 class="font-weight-bolder mb-0">Xin chào, </h6>
-                </nav>
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    </div>
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center px-3">
-                            <a href="#" class="nav-link text-body p-0">
-                                Ghé thăm trang bán hàng
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0">
-                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
-                            <a href="#" class="nav-link text-body font-weight-bold px-0 d-flex">
-                                <i class="material-icons opacity-10" style="margin-right: 10px;">login</i>
-                                <span class="d-sm-inline d-none">Đăng xuất</span>
-                            </a>
-                        </li>
-                        <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li> -->
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include('views/admin/layouts/includes/_nav.php') ?>
         <!-- End Navbar -->
+        <?php defineblock('content') ?>
     </main>
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -133,12 +98,12 @@
     </div>
     <!--   Core JS Files   -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="./js/core/popper.min.js"></script>
-    <script src="./js/core/bootstrap.min.js"></script>
-    <script src="./js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="./js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="./js/material-dashboard.js"></script>
-    <script src="./js/toastr.min.js"></script>
+    <script src="<?= asset('admin/assets/js/core/popper.min.js') ?>"></script>
+    <script src="<?= asset('admin/assets/js/core/bootstrap.min.js') ?>"></script>
+    <script src="<?= asset('admin/assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
+    <script src="<?= asset('admin/assets/js/plugins/smooth-scrollbar.min.js') ?>"></script>
+    <script src="<?= asset('admin/assets/js/material-dashboard.js') ?>"></script>
+    <script src="<?= asset('admin/assets/js/toastr.min.js') ?>"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -211,12 +176,17 @@
         $('input[type=file]').change(function() {
             readURL(this);
         });
-        // To use the JavaScript toastr library, you'll need to integrate it here
-        // and call the corresponding functions with similar behavior as the PHP code.
-        // Example: toastr.success('Success message', 'Thông báo!')
+        <?php if (Flash::has('success')) : ?>
+            toastr.success('<?= Flash::get('success') ?>', 'Thông báo!')
+        <?php endif ?>
+
+        <?php if (Flash::has('error')) : ?>
+            toastr.error('<?= Flash::get('error') ?>', 'Thông báo!')
+        <?php endif ?>
         sidebarColor('danger');
         // darkMode(2);
     </script>
+    <?php defineblock('script') ?>
 </body>
 
 </html>
