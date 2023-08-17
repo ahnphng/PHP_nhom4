@@ -1,4 +1,5 @@
 <?php
+
 require_once('app/Controllers/Web/WebController.php');
 require_once('app/Models/Category.php');
 require_once('app/Models/Product.php');

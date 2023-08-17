@@ -4,6 +4,7 @@ require_once('app/Models/Model.php');
 
 class Dashboard extends Model
 {
+
     public function sellings()
     {
         $sql = "SELECT order_details.product_id as 'id', MIN(products.name) as 'name', MIN(products.price) as 'price', MIN(products.thumbnail) as 'thumbnail' , SUM(order_details.quantity) as 'quantity' FROM `order_details` INNER JOIN products ON products.id = order_details.product_id GROUP BY order_details.product_id ORDER BY quantity DESC LIMIT 8";

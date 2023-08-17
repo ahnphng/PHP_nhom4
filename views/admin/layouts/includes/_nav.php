@@ -9,7 +9,7 @@
             </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center px-3">
-                    <a href="<?= url('') ?>" class="nav-link text-body p-0">
+                    <a href="<?=  url('') ?>" class="nav-link text-body p-0">
                         Ghé thăm trang bán hàng
                     </a>
                 </li>

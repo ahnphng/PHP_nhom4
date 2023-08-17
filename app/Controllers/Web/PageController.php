@@ -1,4 +1,5 @@
 <?php
+
 require_once('app/Controllers/Web/WebController.php');
 
 class PageController extends WebController

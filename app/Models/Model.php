@@ -1,4 +1,5 @@
 <?php
+
 require_once('./core/Database.php');
 require_once('./app/Models/Pagination.php');
 

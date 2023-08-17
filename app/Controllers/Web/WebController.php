@@ -1,4 +1,5 @@
 <?php 
+
 require_once('app/Controllers/Controller.php');
 require_once('app/Middlewares/UserMiddleware.php');
 require_once 'core/Flash.php';
