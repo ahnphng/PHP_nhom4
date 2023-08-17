@@ -1,0 +1,35 @@
+#Don't modify anything here
+php_flag display_errors on
+
+RewriteEngine on
+
+RewriteRule ^public - [L]
+
+RewriteRule ^admin/([^/]+)/([^/]+)/([1-9][0-9]*) index.php?controller=$1&action=$2&id=$3&module=admin [L,QSA]
+
+RewriteRule ^admin/([^/]+)/([^/]+) index.php?controller=$1&action=$2&module=admin [L,QSA]
+
+RewriteRule ^admin/([^/]+) index.php?controller=$1&action=index&module=admin [L,QSA]
+
+RewriteRule ^admin$ index.php?controller=auth&action=login&module=admin [L,QSA]
+
+RewriteRule ^search$ index.php?controller=product&action=search&module=web [L,QSA]
+
+RewriteRule ^pages/([^/]+) index.php?controller=page&action=$1&module=web [L,QSA]
+
+RewriteRule ^([^/]+)/([^/]+)/([1-9][0-9]*) index.php?controller=$1&action=$2&id=$3&module=web [L,QSA]
+
+RewriteRule ^danh-muc/([^/]+) index.php?controller=category&action=index&id=$1&module=web [L,QSA]
+
+RewriteRule ^san-pham/([1-9][0-9]*) index.php?controller=product&action=index&id=$1&module=web [L,QSA]
+
+RewriteRule ^user/([^/]+) index.php?controller=auth&action=$1&module=web [L,QSA]
+
+RewriteRule ^cart/([^/]+) index.php?controller=cart&action=$1&module=web [L,QSA]
+
+RewriteRule ^([^/]+)/([^/]+) index.php?controller=$1&action=$2&module=web [L,QSA]
+
+RewriteRule ^([^/]+) index.php?controller=$1&action=index&module=web [L,QSA]
+
+RewriteRule ^ index.php?controller=home&action=index&module=web [L]
+
